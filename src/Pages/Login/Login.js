@@ -1,11 +1,28 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
+import { AuthContext } from '../../contexts/AuthProvider';
+import { useNavigate } from 'react-router-dom';
 
 const Login = () => {
 
+    const {loginWithEmail} = useContext(AuthContext);
+    const navigate = useNavigate();
+
     const handleLogin = event =>{
         event.preventDefault();
+        const form = event.target;
+        const email = form.email.value;
+        const password = form.password.value;
+        
+        loginWithEmail(email, password)
+        .then(result => {
+            const user = result.user;
+            console.log(user);
+            form.reset();
+            navigate('/')
+        })
+        .catch(e => console.error(e))
     }
 
     return (
