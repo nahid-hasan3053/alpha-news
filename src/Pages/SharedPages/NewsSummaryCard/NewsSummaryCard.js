@@ -2,12 +2,12 @@ import React from 'react';
 import { Button } from 'react-bootstrap';
 import Card from 'react-bootstrap/Card';
 import Image from 'react-bootstrap/Image';
-import { FaShare, FaTag } from 'react-icons/fa';
+import { FaShare } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 
 const NewsSummaryCard = ({news}) => {
 
-    const {author, image_url, title, details, thumbnail_url} = news
+    const {author, image_url, title, details} = news;
 
     return (
         <div>
